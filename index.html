@@ -1,63 +1,164 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TubeZone</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TubeZone</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0f0f0f;color:#fff;font:14px Arial,sans-serif}header{position:sticky;top:0;z-index:5;height:64px;background:#0f0f0f;border-bottom:1px solid #272727;display:flex;align-items:center;gap:18px;padding:10px 18px}.logo{font-size:23px;font-weight:800;white-space:nowrap}.logo b{color:#f00}.search{display:flex;flex:1;max-width:720px;margin:auto}.search input{flex:1;background:#121212;color:#fff;border:1px solid #333;border-right:0;border-radius:22px 0 0 22px;padding:0 16px;height:42px;outline:0}.search button,.pill{background:#272727;color:#fff;border:0;cursor:pointer}.search button{width:62px;border-radius:0 22px 22px 0}.pill{padding:10px 16px;border-radius:22px;font-weight:700}nav{display:flex;gap:8px;overflow:auto;padding:12px 18px;border-bottom:1px solid #272727}nav button{flex:none;background:#272727;color:#fff;border:0;border-radius:18px;padding:9px 15px;cursor:pointer}nav button.active{background:#fff;color:#111}main{max-width:1800px;margin:auto;padding:20px}.title{font-size:22px;margin:4px 0 20px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px 16px}.card{cursor:pointer}.thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;background:#181818}.info{display:flex;gap:10px;padding-top:10px}.avatar{width:36px;height:36px;min-width:36px;border-radius:50%;background:#333;display:grid;place-items:center;color:#aaa;font-weight:bold}.vt{min-width:0}.vt h3{font-size:15px;line-height:1.35;margin:0}.meta{color:#aaa;margin-top:6px;font-size:13px}.msg{text-align:center;color:#aaa;padding:60px 15px}.player{display:none;max-width:1100px;margin:0 auto 25px}.player iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:10px}.close{margin-top:10px;background:#272727;color:#fff;border:0;padding:9px 15px;border-radius:18px;cursor:pointer}.shorts{display:none;position:fixed;inset:0;z-index:20;background:#000}.shortbar{position:absolute;z-index:2;top:0;left:0;right:0;padding:16px 18px;display:flex;justify-content:space-between}.shortsbox{height:100%;overflow:auto;scroll-snap-type:y mandatory}.short{height:100vh;scroll-snap-align:start;display:grid;place-items:center;position:relative}.short iframe{height:100%;width:min(100%,500px);border:0}.x{background:#272727;color:#fff;border:0;width:40px;height:40px;border-radius:50%;font-size:20px}.prefs{display:none;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:18px}.prefs.open{display:flex}.prefsbox{width:min(520px,100%);max-height:90vh;overflow:auto;background:#181818;border:1px solid #333;border-radius:16px;padding:22px;box-shadow:0 20px 60px #000}.prefsbox h2{margin:0 0 8px}.prefsbox p{color:#aaa}.prefrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid #2b2b2b}.prefrow label{font-weight:700}.creatorprefs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.creatorprefs label{background:#272727;padding:8px 10px;border-radius:16px;cursor:pointer}.prefactions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.prefactions button{background:#272727;color:#fff;border:0;border-radius:20px;padding:10px 15px;cursor:pointer}.prefactions .save{background:#fff;color:#111}.compact .grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px 10px}.compact .vt h3{font-size:13px}.compact .meta{font-size:11px}@media(max-width:700px){header{height:56px;padding:8px;gap:7px}.logo{font-size:18px}.search input{height:38px}.search button{height:38px;width:48px}.pill{padding:9px 11px;font-size:12px}main{padding:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 10px}.avatar{width:28px;height:28px;min-width:28px}.vt h3{font-size:13px}.meta{font-size:11px}}
+*{box-sizing:border-box}body{margin:0;background:#0f0f0f;color:#fff;font:14px Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;height:64px;background:#0f0f0f;border-bottom:1px solid #272727;display:flex;align-items:center;gap:18px;padding:10px 18px}
+.logo{font-size:23px;font-weight:800;white-space:nowrap}.logo b{color:#f00}
+.search{display:flex;flex:1;max-width:720px;margin:auto}.search input{flex:1;background:#121212;color:#fff;border:1px solid #333;border-right:0;border-radius:22px 0 0 22px;padding:0 16px;height:42px;outline:0}
+.search button,.pill{background:#272727;color:#fff;border:0;cursor:pointer}.search button{width:62px;border-radius:0 22px 22px 0}.pill{padding:10px 16px;border-radius:22px;font-weight:700}
+nav{display:flex;gap:8px;overflow:auto;padding:12px 18px;border-bottom:1px solid #272727}nav button{flex:none;background:#272727;color:#fff;border:0;border-radius:18px;padding:9px 15px;cursor:pointer}nav button.active{background:#fff;color:#111}
+main{max-width:1800px;margin:auto;padding:20px}.title{font-size:22px;margin:4px 0 20px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px 16px}.card{cursor:pointer}
+.thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;background:#181818}.info{display:flex;gap:10px;padding-top:10px}.avatar{width:36px;height:36px;min-width:36px;border-radius:50%;background:#333;display:grid;place-items:center;color:#aaa;font-weight:bold}
+.vt{min-width:0}.vt h3{font-size:15px;line-height:1.35;margin:0}.meta{color:#aaa;margin-top:6px;font-size:13px}.msg{text-align:center;color:#aaa;padding:60px 15px}
+.player{display:none;max-width:1100px;margin:0 auto 25px}.player iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:10px}.close{margin-top:10px;background:#272727;color:#fff;border:0;padding:9px 15px;border-radius:18px;cursor:pointer}
+.shorts{display:none;position:fixed;inset:0;z-index:20;background:#000}.shortbar{position:absolute;z-index:2;top:0;left:0;right:0;padding:16px 18px;display:flex;justify-content:space-between}.shortsbox{height:100%;overflow:auto;scroll-snap-type:y mandatory}.short{height:100vh;scroll-snap-align:start;display:grid;place-items:center;position:relative}.short iframe{height:100%;width:min(100%,500px);border:0}
+.x{background:#272727;color:#fff;border:0;width:40px;height:40px;border-radius:50%;font-size:20px}
+.prefs{display:none;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:18px}.prefs.open{display:flex}.prefsbox{width:min(520px,100%);max-height:90vh;overflow:auto;background:#181818;border:1px solid #333;border-radius:16px;padding:22px;box-shadow:0 20px 60px #000}.prefsbox h2{margin:0 0 8px}.prefsbox p{color:#aaa}
+.prefrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid #2b2b2b}.prefrow label{font-weight:700}.creatorprefs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.creatorprefs label{background:#272727;padding:8px 10px;border-radius:16px;cursor:pointer}.prefactions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.prefactions button{background:#272727;color:#fff;border:0;border-radius:20px;padding:10px 15px;cursor:pointer}.prefactions .save{background:#fff;color:#111}
+.compact .grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px 10px}.compact .vt h3{font-size:13px}.compact .meta{font-size:11px}
+.signinbox{display:none;position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:18px}.signinbox.open{display:flex}.signinpanel{width:min(420px,100%);background:#181818;border:1px solid #333;border-radius:16px;padding:24px;text-align:center}.signinpanel p{color:#aaa}.googlebtn{display:flex;justify-content:center;margin:20px 0}.signinstatus{color:#aaa;font-size:13px;margin:10px 0}.signout{background:#333;color:#fff;border:0;padding:9px 15px;border-radius:20px;cursor:pointer}
+@media(max-width:700px){header{height:56px;padding:8px;gap:7px}.logo{font-size:18px}.search input{height:38px}.search button{height:38px;width:48px}.pill{padding:9px 11px;font-size:12px}main{padding:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 10px}.avatar{width:28px;height:28px;min-width:28px}.vt h3{font-size:13px}.meta{font-size:11px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Tube<b>Zone</b></div>
+  <button class="pill" id="signin">🔐 Sign in</button>
+  <div class="search"><input id="q" placeholder="Search"><button id="go">🔍</button></div>
+  <button class="pill" id="sb">▶ Shorts</button>
+  <button class="pill" id="pb">⚙ Preferences</button>
+</header>
 
-/* VR GAME */
-.vr-card{grid-column:1/-1;margin:15px 0 30px;padding:24px;border-radius:18px;background:linear-gradient(135deg,#15152b,#20204a);border:1px solid #444;box-shadow:0 10px 40px rgba(0,0,0,.4)}
-.vr-card h2{margin:0 0 8px}.vr-card p{color:#bbb;margin:0 0 18px}.vr-play,.vr-no{color:#fff;border:0;padding:12px 20px;border-radius:24px;font-weight:700;cursor:pointer;font-size:14px}.vr-play{background:#f00}.vr-no{background:#333;margin-left:8px}
-#vrGame{display:none;position:fixed;inset:0;z-index:100;background:#02030c}
-#vrCanvas{width:100%;height:100%;display:block}
-.vrTop{position:absolute;z-index:5;top:0;left:0;right:0;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(rgba(0,0,0,.75),transparent);pointer-events:none}
-.vrTop>*{pointer-events:auto}.vrTitle{font-size:20px;font-weight:800}.vrButton{background:#272727;color:#fff;border:0;padding:10px 14px;border-radius:20px;margin-left:5px;cursor:pointer}.vrButton#enterVR{background:#5b35ff}.vrButton#exitVR{background:#d00}
-.vrScore{position:absolute;z-index:5;left:16px;top:68px;background:rgba(0,0,0,.65);padding:9px 13px;border-radius:15px;font-weight:700}.vrHint{position:absolute;z-index:5;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);padding:10px 16px;border-radius:20px;color:#ddd;text-align:center;white-space:nowrap}
-@media(max-width:700px){.vrTitle{font-size:16px}.vrButton{padding:8px 10px;font-size:12px}.vrHint{max-width:90%;white-space:normal;font-size:12px}}
- .signinbox{display:none;position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:18px}.signinbox.open{display:flex}.signinpanel{width:min(420px,100%);background:#181818;border:1px solid #333;border-radius:16px;padding:24px;text-align:center}.signinpanel p{color:#aaa}.googlebtn{display:flex;justify-content:center;margin:20px 0}.signinstatus{color:#aaa;font-size:13px;margin:10px 0}.signout{background:#333;color:#fff;border:0;padding:9px 15px;border-radius:20px;cursor:pointer}</style></head><body>
-<header><div class="logo">Tube<b>Zone</b></div><button class="pill" id="signin">🔐 Sign in</button><div class="search"><input id="q" placeholder="Search"><button id="go">🔍</button></div><button class="pill" id="sb">▶ Shorts</button><button class="pill" id="pb">⚙ Preferences</button></header>
-<nav id="nav"></nav><div class="signinbox" id="signinbox"><div class="signinpanel"><h2>Sign in to TubeZone</h2><p>Use your Google account to create or sign in.</p><div class="googlebtn" id="googleButton"></div><div class="signinstatus" id="signinstatus"></div><button class="signout" id="signout" style="display:none">Sign out</button></div></div><main><section class="player" id="player"><iframe id="frame" allow="autoplay;encrypted-media;picture-in-picture" allowfullscreen></iframe><button class="close" id="close">✕ Close video</button></section><h2 class="title" id="title">TubeZone</h2><div id="grid" class="grid"></div></main>
-<section class="prefs" id="prefs"><div class="prefsbox"><h2>TubeZone Preferences</h2><p>Your choices are saved only in this browser on this TubeZone website.</p><div class="prefrow"><label for="autoplay">Autoplay videos</label><input id="autoplay" type="checkbox"></div><div class="prefrow"><label for="compact">Compact video grid</label><input id="compact" type="checkbox"></div><div class="prefrow"><div><label>Preferred creators</label><div id="creatorprefs" class="creatorprefs"></div></div></div><div class="prefactions"><button id="pcancel">Cancel</button><button id="psave" class="save">Save preferences</button></div></div></section><section class="shorts" id="shorts"><div class="shortbar"><b>Tube<b style="color:red">Zone</b> · Shorts</b><button class="x" id="sx">✕</button></div><div class="shortsbox" id="shortsbox"></div></section>
+<nav id="nav"></nav>
+
+<div class="signinbox" id="signinbox">
+  <div class="signinpanel">
+    <h2>Sign in to TubeZone</h2>
+    <p>Use your Google account to create or sign in.</p>
+    <div class="googlebtn" id="googleButton"></div>
+    <div class="signinstatus" id="signinstatus"></div>
+    <button class="signout" id="signout" style="display:none">Sign out</button>
+  </div>
+</div>
+
+<main>
+  <section class="player" id="player">
+    <iframe id="frame" allow="autoplay;encrypted-media;picture-in-picture" allowfullscreen></iframe>
+    <button class="close" id="close">✕ Close video</button>
+  </section>
+  <h2 class="title" id="title">TubeZone</h2>
+  <div id="grid" class="grid"></div>
+</main>
+
+<section class="prefs" id="prefs">
+  <div class="prefsbox">
+    <h2>TubeZone Preferences</h2>
+    <p>Your choices are saved only in this browser on this TubeZone website.</p>
+    <div class="prefrow"><label for="autoplay">Autoplay videos</label><input id="autoplay" type="checkbox"></div>
+    <div class="prefrow"><label for="compact">Compact video grid</label><input id="compact" type="checkbox"></div>
+    <div class="prefrow"><div><label>Preferred creators</label><div id="creatorprefs" class="creatorprefs"></div></div></div>
+    <div class="prefactions"><button id="pcancel">Cancel</button><button id="psave" class="save">Save preferences</button></div>
+  </div>
+</section>
+
+<section class="shorts" id="shorts">
+  <div class="shortbar"><b>Tube<b style="color:red">Zone</b> · Shorts</b><button class="x" id="sx">✕</button></div>
+  <div class="shortsbox" id="shortsbox"></div>
+</section>
+
 <script>
 const BACKEND_URL="https://YOUR-BACKEND-URL";
 const GOOGLE_CLIENT_ID="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com";
 const KEY="AIzaSyApCmAt9X5tlLJsbDQh5mWxvEJNNneJd_c";
 const creators=["Caylus","Foltyn Family","Steak","Nico","The Stradman","FlameFragsMC","MrBeast","Koopekool","Cruz"];
 const $=id=>document.getElementById(id);
+
 function setSigninStatus(t){$("signinstatus").textContent=t}
 function saveAuth(d){localStorage.setItem("tubezoneToken",d.token);localStorage.setItem("tubezoneUser",JSON.stringify(d.user));$("signinbox").classList.remove("open");$("signin").textContent="👤 "+d.user.name;$("signout").style.display="inline-block"}
 async function googleCredential(r){setSigninStatus("Signing in…");try{const x=await fetch(BACKEND_URL+"/api/auth/google",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({credential:r.credential})});const d=await x.json();if(!x.ok)throw Error(d.error||"Google sign-in failed.");saveAuth(d)}catch(e){setSigninStatus(e.message)}}
 function initGoogle(){if(!window.google?.accounts?.id)return;if(GOOGLE_CLIENT_ID.startsWith("YOUR_")){setSigninStatus("Add your Google OAuth client ID first.");return}google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:googleCredential});google.accounts.id.renderButton($("googleButton"),{theme:"outline",size:"large",text:"signin_with",shape:"pill",width:300})}
 function openSignin(){$("signinbox").classList.add("open");setTimeout(initGoogle,100)}
-async function api(endpoint,p={}){let u=new URL("https://www.googleapis.com/youtube/v3/"+endpoint);Object.entries(p).forEach(([k,v])=>u.searchParams.set(k,v));u.searchParams.set("key",KEY);let r=await fetch(u);let d=await r.json();if(!r.ok)throw Error(d?.error?.message||"YouTube request failed");return d}
+
+async function api(endpoint,p={}){
+  let u=new URL("https://www.googleapis.com/youtube/v3/"+endpoint);
+  Object.entries(p).forEach(([k,v])=>u.searchParams.set(k,v));
+  u.searchParams.set("key",KEY);
+  let r=await fetch(u),d=await r.json();
+  if(!r.ok)throw Error(d?.error?.message||"YouTube request failed");
+  return d;
+}
 function msg(t){$("grid").innerHTML='<div class="msg" style="grid-column:1/-1">'+t+"</div>"}
-function nav(){let n=$("nav");n.innerHTML="";let p=loadPrefs();["Home",...creators].forEach((name,i)=>{let b=document.createElement("button");b.textContent=name;if(!i)b.className="active";if(p.creators.includes(name))b.title="Preferred creator";b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");i?channel(name):home()};n.appendChild(b)})}
-function home(){ $("title").textContent="TubeZone"; $("grid").innerHTML='<div class="msg" style="grid-column:1/-1">Choose a creator or search for a video.</div>';close()}
+function nav(){
+  let n=$("nav");n.innerHTML="";let p=loadPrefs();
+  ["Home",...creators].forEach((name,i)=>{
+    let b=document.createElement("button");b.textContent=name;
+    if(!i)b.className="active";
+    if(p.creators.includes(name))b.title="Preferred creator";
+    b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");i?channel(name):home()};
+    n.appendChild(b)
+  })
+}
+function home(){$("title").textContent="TubeZone";$("grid").innerHTML='<div class="msg" style="grid-column:1/-1">Choose a creator or search for a video.</div>';close()}
 async function channel(q){$("title").textContent=q;msg("Loading videos…");try{let s=await api("search",{part:"snippet",q,type:"video",maxResults:50});render(s.items||[])}catch(e){msg("Could not load videos.<br><br>"+e.message)}}
 async function search(){let q=$("q").value.trim();if(!q)return;try{localStorage.setItem("tubezoneLastSearch",q)}catch(e){}$("title").textContent="Search: "+q;msg("Searching…");try{let s=await api("search",{part:"snippet",q,type:"video",maxResults:50});render(s.items||[])}catch(e){msg("Search failed.<br><br>"+e.message)}}
-function render(items){let g=$("grid");g.innerHTML="";if(!items.length){msg("No videos found.");return}items.forEach(x=>{let id=x.id?.videoId||x.contentDetails?.videoId;if(!id)return;let s=x.snippet||{},c=document.createElement("div");c.className="card";let im=s.thumbnails?.high?.url||s.thumbnails?.medium?.url||s.thumbnails?.default?.url;c.innerHTML='<img class="thumb" loading="lazy" src="'+im+'"><div class="info"><div class="avatar">'+(s.channelTitle||"?")[0]+'</div><div class="vt"><h3>'+esc(s.title||"Video")+'</h3><div class="meta">'+esc(s.channelTitle||"")+'</div></div></div>';c.onclick=()=>play(id);g.appendChild(c)})}
+function render(items){
+  let g=$("grid");g.innerHTML="";
+  if(!items.length){msg("No videos found.");return}
+  items.forEach(x=>{
+    let id=x.id?.videoId||x.contentDetails?.videoId;if(!id)return;
+    let s=x.snippet||{},c=document.createElement("div");c.className="card";
+    let im=s.thumbnails?.high?.url||s.thumbnails?.medium?.url||s.thumbnails?.default?.url;
+    c.innerHTML='<img class="thumb" loading="lazy" src="'+im+'"><div class="info"><div class="avatar">'+(s.channelTitle||"?")[0]+'</div><div class="vt"><h3>'+esc(s.title||"Video")+'</h3><div class="meta">'+esc(s.channelTitle||"")+"</div></div></div>";
+    c.onclick=()=>play(id);g.appendChild(c)
+  })
+}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 function play(id){let ap=loadPrefs().autoplay?"1":"0";localStorage.setItem("tubezoneLastVideo",id);$("frame").src="https://www.youtube.com/embed/"+encodeURIComponent(id)+"?autoplay="+ap+"&rel=0";$("player").style.display="block";scrollTo({top:0,behavior:"smooth"})}
 function close(){$("frame").src="";$("player").style.display="none"}
+
 const PREFKEY="tubezonePreferences";
 const defaultPrefs={autoplay:true,compact:false,creators:["Caylus","MrBeast"]};
 function loadPrefs(){try{return {...defaultPrefs,...JSON.parse(localStorage.getItem(PREFKEY)||"{}")}}catch(e){return {...defaultPrefs}}}
 function savePrefs(p){try{localStorage.setItem(PREFKEY,JSON.stringify(p))}catch(e){}}
-function buildPrefs(){let p=loadPrefs();$("autoplay").checked=!!p.autoplay;$("compact").checked=!!p.compact;document.body.classList.toggle("compact",!!p.compact);let box=$("creatorprefs");box.innerHTML="";creators.forEach(name=>{let l=document.createElement("label");l.innerHTML='<input type="checkbox" value="'+esc(name)+'" '+(p.creators.includes(name)?"checked":"")+'> '+esc(name);box.appendChild(l)})}
+function buildPrefs(){
+  let p=loadPrefs();$("autoplay").checked=!!p.autoplay;$("compact").checked=!!p.compact;document.body.classList.toggle("compact",!!p.compact);
+  let box=$("creatorprefs");box.innerHTML="";
+  creators.forEach(name=>{let l=document.createElement("label");l.innerHTML='<input type="checkbox" value="'+esc(name)+'" '+(p.creators.includes(name)?"checked":"")+"> "+esc(name);box.appendChild(l)})
+}
 function openPrefs(){buildPrefs();$("prefs").classList.add("open")}
 function closePrefs(){$("prefs").classList.remove("open")}
 function applyPrefs(){let selected=[...document.querySelectorAll("#creatorprefs input:checked")].map(x=>x.value);let p={autoplay:$("autoplay").checked,compact:$("compact").checked,creators:selected};savePrefs(p);document.body.classList.toggle("compact",p.compact);closePrefs();nav();home()}
-function restorePrefs(){let p=loadPrefs();document.body.classList.toggle("compact",!!p.compact);if(p.creators?.length){setTimeout(()=>{document.querySelectorAll("nav button").forEach(b=>{if(p.creators.includes(b.textContent))b.classList.add("preferred")})},0)}}
+function restorePrefs(){let p=loadPrefs();document.body.classList.toggle("compact",!!p.compact)}
 
-async function loadShorts(){let box=$("shortsbox");box.innerHTML='<div class="msg">Loading Shorts…</div>';try{let d=await api("search",{part:"snippet",q:"viral shorts",type:"video",videoDuration:"short",maxResults:50});box.innerHTML="";(d.items||[]).forEach(x=>{let id=x.id?.videoId;if(!id)return;let s=document.createElement("div");s.className="short";s.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&playsinline=1&rel=0" allow="autoplay;encrypted-media;picture-in-picture" allowfullscreen></iframe>';box.appendChild(s)})}catch(e){box.innerHTML='<div class="msg">'+e.message+"</div>"}}
-$("go").onclick=search;$("q").onkeydown=e=>{if(e.key==="Enter")search()};$("pb").onclick=openPrefs;$("psave").onclick=applyPrefs;$("pcancel").onclick=closePrefs;$("prefs").onclick=e=>{if(e.target.id==="prefs")closePrefs()};$("close").onclick=close;$("sb").onclick=()=>{$("shorts").style.display="block";loadShorts()};$("sx").onclick=()=>{$("shorts").style.display="none";$("shortsbox").innerHTML=""};nav();home();restorePrefs();try{let last=localStorage.getItem("tubezoneLastSearch");if(last)$("q").value=last}catch(e){}
+async function loadShorts(){
+  let box=$("shortsbox");box.innerHTML='<div class="msg">Loading Shorts…</div>';
+  try{
+    let d=await api("search",{part:"snippet",q:"viral shorts",type:"video",videoDuration:"short",maxResults:50});
+    box.innerHTML="";
+    (d.items||[]).forEach(x=>{
+      let id=x.id?.videoId;if(!id)return;
+      let s=document.createElement("div");s.className="short";
+      s.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&playsinline=1&rel=0" allow="autoplay;encrypted-media;picture-in-picture" allowfullscreen></iframe>';
+      box.appendChild(s)
+    })
+  }catch(e){box.innerHTML='<div class="msg">'+e.message+"</div>"}
+}
+
+$("go").onclick=search;$("q").onkeydown=e=>{if(e.key==="Enter")search()};$("pb").onclick=openPrefs;$("psave").onclick=applyPrefs;$("pcancel").onclick=closePrefs;$("prefs").onclick=e=>{if(e.target.id==="prefs")closePrefs()};$("close").onclick=close;
+$("sb").onclick=()=>{$("shorts").style.display="block";loadShorts()};$("sx").onclick=()=>{$("shorts").style.display="none";$("shortsbox").innerHTML=""};
+nav();home();restorePrefs();try{let last=localStorage.getItem("tubezoneLastSearch");if(last)$("q").value=last}catch(e){}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  $("signin").onclick=openSignin;
+  $("signinbox").onclick=e=>{if(e.target.id==="signinbox")$("signinbox").classList.remove("open")};
+  $("signout").onclick=()=>{localStorage.removeItem("tubezoneToken");localStorage.removeItem("tubezoneUser");$("signin").textContent="🔐 Sign in";$("signout").style.display="none"};
+  try{const u=JSON.parse(localStorage.getItem("tubezoneUser")||"null");if(u){$("signin").textContent="👤 "+u.name;$("signout").style.display="inline-block"}}catch(e){}
+});
 </script>
-<section id="vrGame">
-  <div class="vrTop">
-    <div class="vrTitle">🎮 TubeZone VR</div>
-    <div><button class="vrButton" id="enterVR">🥽 Enter VR</button><button class="vrButton" id="exitVR">✕ Exit</button></div>
-  </div>
-  <div class="vrScore" id="vrScore">⭐ Orbs: 0 / 5</div>
-  <canvas id="vrCanvas"></canvas>
-  <div class="vrHint">Look around and collect the five glowing orbs.</div>
-</section>
-<script src="https://accounts.google.com/gsi/client" async defer></script><script>document.addEventListener("DOMContentLoaded",()=>{$("signin").onclick=openSignin;$("signinbox").onclick=e=>{if(e.target.id==="signinbox")$("signinbox").classList.remove("open")};$("signout").onclick=()=>{localStorage.removeItem("tubezoneToken");localStorage.removeItem("tubezoneUser");$("signin").textContent="🔐 Sign in";$("signout").style.display="none"};try{const u=JSON.parse(localStorage.getItem("tubezoneUser")||"null");if(u){$("signin").textContent="👤 "+u.name;$("signout").style.display="inline-block"}}catch(e){}});</script><script src="https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.min.js"></script>
-</body></html>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>
